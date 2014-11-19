@@ -9,7 +9,7 @@ module Lab2 where
 -- ===================================
 
 toDigits :: Integer -> [Integer]
-toDigits 0 = []
+toDigits 0 = [0]
 toDigits n = toDigits(n `div` 10) ++ [(n `mod` 10)] 
 
 -- ===================================
