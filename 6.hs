@@ -81,3 +81,16 @@ int2bin_unfold = unfold (== 0) (`mod` 2) (`div` 2)
 
 chop8:: [Bit] -> [[Bit]]
 chop8 = unfold null (take 8) (drop 8)
+
+
+toDigits :: Integer -> [Integer]
+toDigits n
+	| n < 10 = [n]
+	| otherwise = toDigits(n `div` 10) ++ [(n `mod` 10)] 
+
+map_fold1 :: (a->b) ->[a] -> [b]
+map_fold1 f = unfold null (f. head ) tail
+
+
+iterata_unfold :: (a ->b-> a) -> a -> [a]
+iterate_unfold f = unfold (const False) id f 
