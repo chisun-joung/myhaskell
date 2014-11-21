@@ -92,5 +92,5 @@ map_fold1 :: (a->b) ->[a] -> [b]
 map_fold1 f = unfold null (f. head ) tail
 
 
-iterata_unfold :: (a ->b-> a) -> a -> [a]
-iterate_unfold f = unfold (const False) id f 
+--iterata_unfold :: (a ->b-> a) -> a -> [a]
+--iterate_unfold f = unfold (const False) id f 
