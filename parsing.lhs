@@ -102,12 +102,23 @@ Derived primitives
 >                                     return ()
 >
 > comment                       :: Parser ()
-> comment                       = error "You must implement comment"
+> comment                       = do 
+>                                     string "--"
+>                                     many (sat (/= '\n'))
+>                                     return ()
+>
 >
 > expr                          :: Parser Int
-> expr                          = error "You must implement expr"
+> expr                          =  do 
+>                                     n <- natural
+>                                     ns <- many
+>                                              (do 
+>                                                  symbol "-"
+>                                                  natural)
+>                                     return (foldl (-) n ns) 
+>
 
-Ignoring spacing
+Ignoring spacin
 ----------------
 
 > token                         :: Parser a -> Parser a
