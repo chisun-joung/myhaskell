@@ -27,11 +27,17 @@ eval (Div x y) = do
 
 
 
+--instance Monad [] where
+--	return x = [x] 
+--	xs >>= f = concat (map f xs)
 
 
 
-
-
+pairs :: [a] -> [b] -> [(a,b)]
+pairs xs ys = do 
+	       		x <- xs
+	       		y <- ys
+	       		return (x,y)
 
 
 
