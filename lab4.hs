@@ -49,4 +49,4 @@ euclid (x, y) = if x == y then x else if x > y then euclid (x - y, y) else eucli
 -- ===================================
 
 funkyMap :: (a -> b) -> (a -> b) -> [a] -> [b]
-funkyMap f g xs = undefined
+funkyMap f g xs = [ f e  | e <- xs!!ei , ei = [0,2..]]
