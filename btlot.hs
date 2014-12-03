@@ -28,9 +28,14 @@ t = Node 1
 
 
 
-levelorder :: Tree -> [Int]
-levelorder x = loop[x]
-	where 
-		loop [] = []
-		loop (Empty : xs) = loop xs
-		loop (Node n l r : xs) = loop (xs ++ [l, r]) ++ [n]
+levelorderTop :: Tree -> [[Int]]
+levelorderTop Empty = []
+levelorderTop (Node v l r) = [v] : merge ( levelorderTop l) (levelorderTop r)
+
+merge :: [[Int]] -> [[Int]] -> [[Int]]
+merge x [] = x
+merge [] x = x
+merge (x:xs) (y:ys) = (x ++ y) : merge xs ys
+
+levelorderBottom :: Tree -> [[Int]]
+levelorderBottom = reverse.levelorderTop
